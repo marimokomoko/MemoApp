@@ -19,11 +19,22 @@ import com.example.memoapp.R
 import com.example.memoapp.ui.TodoTopAppBar
 import com.example.memoapp.ui.navigation.NavigationDestination
 
+/**
+ * HomeDestination:NavigationDestinationを実装したオブジェクト
+ * @param route ナビ先のルートを識別する文字列
+ * @param titleRes ナビ先のタイトルリソースID
+ */
 object HomeDestination : NavigationDestination {
     override val route = "home"
     override val titleRes = R.string.app_name
 }
 
+/**
+ * HomeScreen:アプリのホーム画面を表すコンポーザブル関数
+ * @param navigateToItemEntry FAButtonがタップされた時の処理関数(新規作成画面へ)
+ * @param navigateToItemUpdate アイテムがタップされたときの処理関数(更新画面へ)
+ * @param modifier 修飾子
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(

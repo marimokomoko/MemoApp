@@ -12,6 +12,11 @@ import com.example.memoapp.R
 import com.example.memoapp.ui.TodoTopAppBar
 import com.example.memoapp.ui.navigation.NavigationDestination
 
+/**
+ * ItemEntryDestination:新規追加画面への画面遷移を表すオブジェクト
+ * @param route ナビ先のルートを識別する文字列
+ * @param titleRes ナビ先のタイトルリソースID
+ */
 object ItemEntryDestination : NavigationDestination {
     override val route = "item_entry"
     override val titleRes = R.string.item_entry_title

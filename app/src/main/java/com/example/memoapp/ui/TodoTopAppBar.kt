@@ -11,6 +11,14 @@ import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
+/**
+ * TodoTopAppBar:上部アプリバーを表示するコンポーザブル関数
+ * @param title トップバー表示タイトル
+ * @param canNavigateBack 戻るナビゲーションボタンを表示(有効true/無効false)
+ * @param modifier 修飾子
+ * @param scrollBehavior スクロール動作制御
+ * @param navigateUp ナビゲーションアップボタンがタップされた時のコールバック関数
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TodoTopAppBar(

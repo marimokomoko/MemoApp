@@ -12,13 +12,18 @@ import com.example.memoapp.R
 import com.example.memoapp.ui.TodoTopAppBar
 import com.example.memoapp.ui.navigation.NavigationDestination
 
+/**
+ * ItemEditDestination:編集画面への画面遷移を表すオブジェクト
+ */
 object ItemEditDestination : NavigationDestination {
     override val route = "item_edit"
     override val titleRes = R.string.edit_item_title
     const val itemIdArg = "itemId"
     val routeWithArgs = "$/route/{$itemIdArg}"
 }
-
+/**
+ * ItemEditScreen:編集画面
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ItemEditScreen(

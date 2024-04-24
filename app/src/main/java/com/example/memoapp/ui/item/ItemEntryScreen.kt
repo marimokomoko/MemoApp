@@ -22,6 +22,9 @@ object ItemEntryDestination : NavigationDestination {
     override val titleRes = R.string.item_entry_title
 }
 
+/**
+ * ItemEntryScreen:新規追加画面
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ItemEntryScreen(

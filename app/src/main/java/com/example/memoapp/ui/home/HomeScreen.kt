@@ -30,7 +30,7 @@ object HomeDestination : NavigationDestination {
 }
 
 /**
- * HomeScreen:アプリのホーム画面を表すコンポーザブル関数
+ * HomeScreen:一覧画面
  * @param navigateToItemEntry FAButtonがタップされた時の処理関数(新規作成画面へ)
  * @param navigateToItemUpdate アイテムがタップされたときの処理関数(更新画面へ)
  * @param modifier 修飾子

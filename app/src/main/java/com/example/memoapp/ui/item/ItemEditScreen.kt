@@ -34,7 +34,7 @@ fun ItemEditScreen(
     Scaffold(
         topBar = {
             TodoTopAppBar(
-                title = stringResource(ItemEntryDestination.titleRes),
+                title = stringResource(ItemEditDestination.titleRes),
                 canNavigateBack = true,
                 navigateUp = onNavigateUp
             )
@@ -48,5 +48,5 @@ fun ItemEditScreen(
 @Preview
 @Composable
 private fun ItemEditScreenPreview() {
-    ItemEntryScreen()
+    ItemEditScreen()
 }

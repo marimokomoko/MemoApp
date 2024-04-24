@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.memoapp.ui.ui.navigation.TodoNavHost
+import com.example.memoapp.ui.navigation.TodoNavHost
 
 /**
  * TodoApp:NavHostを取り込むコンポーザブル関数

@@ -1,4 +1,4 @@
-package com.example.memoapp.ui.ui.navigation
+package com.example.memoapp.ui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier

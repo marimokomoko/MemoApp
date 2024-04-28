@@ -1,21 +1,34 @@
 package com.example.memoapp.ui.home
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.memoapp.R
+import com.example.memoapp.ui.AppViewModelProvider
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.memoapp.ui.TodoTopAppBar
 import com.example.memoapp.ui.navigation.NavigationDestination
 
@@ -40,8 +53,20 @@ object HomeDestination : NavigationDestination {
 fun HomeScreen(
     navigateToItemEntry: () -> Unit = {},
     navigateToItemUpdate: (Int) -> Unit = {},
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    viewModel: HomeViewModel =
+        viewModel(factory = AppViewModelProvider.Factory)
 ) {
+    val itemList by viewModel.homeUiState.itemList
+        .collectAsState(initial = emptyList())
+    var showDone by remember { mutableStateOf(false) }
+    var filteredItemList by remember(itemList, showDone) {
+        mutableStateOf(itemList.filter {
+            if (showDone) true
+            else it.done == false
+        })
+    }
+
     Scaffold(
         topBar = {
             TodoTopAppBar(
@@ -50,25 +75,34 @@ fun HomeScreen(
             )
         },
         floatingActionButton = {
-            FloatingActionButton(
+            IconButton(
                 onClick = navigateToItemEntry,
-                shape = MaterialTheme.shapes.medium,
                 modifier = Modifier
-                    .padding(dimensionResource(id = R.dimen.padding_large))
+                    .padding(
+                        dimensionResource(id = R.dimen.padding_large)
+
+                    )
+                    .size(100.dp)
             ) {
-                Icon(
-                    imageVector = Icons.Default.Add,
-                    contentDescription = stringResource(id = R.string.item_entry_title)
+                Image(
+                    painter = painterResource(id = R.drawable.ashiato_black),
+                    contentDescription = "",
+                    modifier = Modifier.size(80.dp)
                 )
             }
-        }) { innerPadding ->
-        Button(
-            onClick = {
-                navigateToItemUpdate(1)
-            }, modifier = Modifier.padding(innerPadding)
-        ) {
-            Text(text = "Edit画面")
         }
+
+    ) { innerPadding ->
+        HomeBody(
+            itemList = filteredItemList,
+            onItemClick = { navigateToItemUpdate(it.id) },
+            onCheckedChange = {
+                showDone = it
+            },
+            modifier = Modifier
+                .padding(innerPadding)
+                .fillMaxSize()
+        )
     }
 }
 

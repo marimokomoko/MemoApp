@@ -29,8 +29,12 @@ import androidx.compose.ui.unit.dp
 import com.example.memoapp.R
 import com.example.memoapp.ui.AppViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.memoapp.data.Item
+import com.example.memoapp.data.ItemsRepository
 import com.example.memoapp.ui.TodoTopAppBar
 import com.example.memoapp.ui.navigation.NavigationDestination
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
 
 /**
  * HomeDestination:NavigationDestinationを実装したオブジェクト
@@ -80,12 +84,11 @@ fun HomeScreen(
                 modifier = Modifier
                     .padding(
                         dimensionResource(id = R.dimen.padding_large)
-
                     )
                     .size(100.dp)
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.ashiato_black),
+                    painter = painterResource(id = R.drawable.m_enpitsu),
                     contentDescription = "",
                     modifier = Modifier.size(80.dp)
                 )
@@ -106,8 +109,28 @@ fun HomeScreen(
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-private fun HomeDestination() {
-    HomeScreen()
-}
+//@Preview(showBackground = true)
+//@Composable
+//private fun HomeScreenPreview() {
+//    val mockObject = object : ItemsRepository {
+//        override fun getAllItemsStream(): Flow<List<Item>> = MutableStateFlow(
+//            listOf(
+//                Item(1, "めも 1", "めも詳細1", false),
+//                Item(2, "めも 2", "めも詳細2", true)
+//            )
+//        )
+//
+//        override fun getItemsStream(id: Int): Flow<Item?> = MutableStateFlow(
+//            Item(1, "めも1", "めも詳細1", false)
+//        )
+//
+//        override suspend fun insetItem(item: Item) {}
+//        override suspend fun deleteItem(item: Item) {}
+//        override suspend fun updateItem(item: Item) {}
+//    }
+//    HomeScreen(
+//        navigateToItemEntry = {},
+//        navigateToItemUpdate = {},
+//        viewModel = HomeViewModel(mockObject)
+//    )
+//}

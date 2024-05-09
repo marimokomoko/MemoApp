@@ -109,28 +109,28 @@ fun HomeScreen(
     }
 }
 
-//@Preview(showBackground = true)
-//@Composable
-//private fun HomeScreenPreview() {
-//    val mockObject = object : ItemsRepository {
-//        override fun getAllItemsStream(): Flow<List<Item>> = MutableStateFlow(
-//            listOf(
-//                Item(1, "めも 1", "めも詳細1", false),
-//                Item(2, "めも 2", "めも詳細2", true)
-//            )
-//        )
-//
-//        override fun getItemsStream(id: Int): Flow<Item?> = MutableStateFlow(
-//            Item(1, "めも1", "めも詳細1", false)
-//        )
-//
-//        override suspend fun insetItem(item: Item) {}
-//        override suspend fun deleteItem(item: Item) {}
-//        override suspend fun updateItem(item: Item) {}
-//    }
-//    HomeScreen(
-//        navigateToItemEntry = {},
-//        navigateToItemUpdate = {},
-//        viewModel = HomeViewModel(mockObject)
-//    )
-//}
+@Preview(showBackground = true)
+@Composable
+private fun HomeScreenPreview() {
+    val mockObject = object : ItemsRepository {
+        override fun getAllItemsStream(): Flow<List<Item>> = MutableStateFlow(
+            listOf(
+                Item(1, "めも 1", "めも詳細1", false),
+                Item(2, "めも 2", "めも詳細2", true)
+            )
+        )
+
+        override fun getItemsStream(id: Int): Flow<Item?> = MutableStateFlow(
+            Item(1, "めも1", "めも詳細1", false)
+        )
+
+        override suspend fun insertItem(item: Item) {}
+        override suspend fun deleteItem(item: Item) {}
+        override suspend fun updateItem(item: Item) {}
+    }
+    HomeScreen(
+        navigateToItemEntry = {},
+        navigateToItemUpdate = {},
+        viewModel = HomeViewModel(mockObject)
+    )
+}

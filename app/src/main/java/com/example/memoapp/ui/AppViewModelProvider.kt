@@ -2,6 +2,7 @@ package com.example.memoapp.ui
 
 import android.text.Spannable.Factory
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
@@ -21,6 +22,13 @@ object AppViewModelProvider {
         // 新規画面のViewModel初期化
         initializer {
             ItemEntryViewModel(todoApplication().container.itemsRepository)
+        }
+        // 編集画面のViewModel初期化
+        initializer {
+            ItemEditViewModel(
+                this.createSavedStateHandle(),
+                todoApplication().container.itemsRepository
+            )
         }
     }
 }

@@ -29,24 +29,26 @@ class ItemEditViewModel(
                 }
             }
         }
-        suspend fun updateItem() {
-            if (validateInput(itemUiState.itemDetails)) {
-                itemsRepository.updateItem(itemUiState.itemDetails.toItem())
-            }
-        }
+    }
 
-        suspend fun deleteItem() {
-            itemsRepository.deleteItem(itemUiState.itemDetails.toItem())
-        }
-
-        fun updateUiState(itemDetails: ItemDetails) {
-            itemUiState =
-                ItemUiState(
-                    itemDetails = itemDetails,
-                    isEntryValid = validateInput(itemDetails)
-                )
+    suspend fun updateItem() {
+        if (validateInput(itemUiState.itemDetails)) {
+            itemsRepository.updateItem(itemUiState.itemDetails.toItem())
         }
     }
+
+    suspend fun deleteItem() {
+        itemsRepository.deleteItem(itemUiState.itemDetails.toItem())
+    }
+
+    fun updateUiState(itemDetails: ItemDetails) {
+        itemUiState =
+            ItemUiState(
+                itemDetails = itemDetails,
+                isEntryValid = validateInput(itemDetails)
+            )
+    }
+
     private fun validateInput(
         uiState: ItemDetails = itemUiState.itemDetails
     ): Boolean {

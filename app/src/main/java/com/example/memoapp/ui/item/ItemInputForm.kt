@@ -41,7 +41,7 @@ fun ItemInputForm(
         OutlinedTextField(
             value = itemDetails.title,
             onValueChange = { onValueChange(itemDetails.copy(title = it)) },
-            label = { Text(text = "めも") },
+            label = { Text(text = "タイトル*") },
             modifier = Modifier.fillMaxWidth(),
             singleLine = true
         )
@@ -50,7 +50,7 @@ fun ItemInputForm(
             onValueChange = {
                 onValueChange(itemDetails.copy(description = it))
             },
-            label = { Text(text = "くわしく") },
+            label = { Text(text = "詳細*") },
             modifier = Modifier.fillMaxWidth(),
             singleLine = true
         )

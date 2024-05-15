@@ -68,7 +68,7 @@ fun ItemInputForm(
         ) {
             Checkbox(checked = itemDetails.done, onCheckedChange = null)
             Text(
-                text = "OK",
+                text = "DONE",
                 style = MaterialTheme.typography.bodyLarge,
                 modifier = Modifier.padding(start = 16.dp)
             )

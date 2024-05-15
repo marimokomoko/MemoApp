@@ -8,6 +8,7 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.memoapp.TodoApplication
 import com.example.memoapp.ui.home.HomeViewModel
+import com.example.memoapp.ui.item.ItemEditViewModel
 import com.example.memoapp.ui.item.ItemEntryViewModel
 
 /**
